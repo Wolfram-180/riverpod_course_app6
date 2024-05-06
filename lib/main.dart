@@ -170,10 +170,8 @@ class FilmsList extends ConsumerWidget {
   final AlwaysAliveProviderBase<Iterable<Film>> provider;
   const FilmsList({
     required this.provider,
-    Key? key,
-  }) : super(
-          key: key,
-        );
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
