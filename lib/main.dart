@@ -1,4 +1,3 @@
-import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -17,6 +16,46 @@ void main() {
   );
 }
 
+@immutable
+class Film {
+  final String id;
+  final String title;
+  final String description;
+  final bool isFavorite;
+
+  const Film({
+    required this.id,
+    required this.title,
+    required this.description,
+    required this.isFavorite,
+  });
+
+  Film copy({required bool isFavorite}) => Film(
+        id: id,
+        title: title,
+        description: description,
+        isFavorite: isFavorite,
+      );
+
+  @override
+  String toString() => 'Film: id: $id, '
+      'title: $title, '
+      'description: $description, '
+      'isFavorite: $isFavorite ;';
+
+  @override
+  bool operator ==(covariant Film other) =>
+      id == other.id && isFavorite == other.isFavorite;
+
+  @override
+  int get hashCode => Object.hashAll(
+        [
+          id,
+          isFavorite,
+        ],
+      );
+}
+
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
@@ -31,3 +70,30 @@ class HomePage extends ConsumerWidget {
     );
   }
 }
+
+const allFilms = [
+  Film(
+    id: '1',
+    title: 'title1',
+    description: 'descr1',
+    isFavorite: false,
+  ),
+  Film(
+    id: '2',
+    title: 'title2',
+    description: 'descr2',
+    isFavorite: false,
+  ),
+  Film(
+    id: '3',
+    title: 'title3',
+    description: 'descr3',
+    isFavorite: false,
+  ),
+  Film(
+    id: '4',
+    title: 'title4',
+    description: 'descr4',
+    isFavorite: false,
+  ),
+];
